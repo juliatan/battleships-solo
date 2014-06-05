@@ -2,7 +2,7 @@ require 'board'
 
 describe Board do
   
-    let(:board) { Board.new }
+    let(:board) { Board.new(capacity: 3) }
 
     context 'at initialization' do
       
@@ -18,6 +18,18 @@ describe Board do
         expect(board.display_grid['A1'].class).to eq Cell
       end
 
+      it 'has a maximum number of ships that it can hold' do
+        expect(board.capacity).to eq 3
+      end
+    end
+
+    context 'when setting up gameplay' do
+
+      xit 'can build a ship' do
+        ship = double :ship, coordinates: ["A1", "A2"]
+        board.build(ship)
+        expect(board.display_grid['A1'].status).to eq :ship
+      end
     end
 
 end

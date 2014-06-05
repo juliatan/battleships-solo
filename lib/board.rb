@@ -1,9 +1,13 @@
 class Board
 
   attr_reader :display_grid
+  attr_writer :capacity
 
-  def initialize
+  DEFAULT_CAPACITY = 10
+
+  def initialize(options ={})
     @display_grid = create_empty_grid
+    self.capacity = options.fetch(:capacity, capacity)
   end
 
   def create_empty_grid
@@ -16,6 +20,14 @@ class Board
     grid
   end
 
+  def capacity
+    @capacity ||= DEFAULT_CAPACITY
+  end
 
+  # def build(ship)
+  #   ship.cells.each do |cell|
+  #     cell.status = :ship
+  #   end
+  # end
 
 end
